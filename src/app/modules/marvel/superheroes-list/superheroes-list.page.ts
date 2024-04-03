@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MarvelService } from '../../../core/services/marvel.service';
 
 @Component({
   selector: 'app-superheroes-list',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SuperheroesListPage implements OnInit {
 
-  constructor() { }
+  superheroes: any[] = [];
 
-  ngOnInit() {
+  constructor(private marvelService: MarvelService) { }
+
+  ngOnInit(): void {
+    this.marvelService.getCharacters().subscribe(response => {
+      console.log(response);
+      this.superheroes = response.data.results;
+    });
   }
 
 }
