@@ -8,8 +8,16 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'superheroes-list',
     pathMatch: 'full'
+  },
+  {
+    path: 'superheroes-list',
+    loadChildren: () => import('./modules/marvel/superheroes-list/superheroes-list.module').then( m => m.SuperheroesListPageModule)
+  },
+  {
+    path: 'superhero-detail',
+    loadChildren: () => import('./modules/marvel/superhero-detail/superhero-detail.module').then( m => m.SuperheroDetailPageModule)
   },
 ];
 
