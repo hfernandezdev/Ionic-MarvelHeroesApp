@@ -1,13 +1,38 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>superhero-detail</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/superheroes-list">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>Detalles del Superhéroe</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">superhero-detail</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title class="ion-text-center">{{ superhero.name }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-thumbnail class="centered-image superhero-image">
+        <ion-img class="superhero-detail-image" [src]="superhero.thumbnail.path + '/standard_fantastic.' + superhero.thumbnail.extension"></ion-img>
+      </ion-thumbnail>
+      <ion-item-divider color="light">
+        <ion-text>Otra información:</ion-text>
+      </ion-item-divider>
+      <ion-item>
+        <ion-label>Cómics disponibles:</ion-label>
+        <ion-text>{{ superhero.comics.available }}</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Series disponibles:</ion-label>
+        <ion-text>{{ superhero.series.available }}</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Historias disponibles:</ion-label>
+        <ion-text>{{ superhero.stories.available }}</ion-text>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

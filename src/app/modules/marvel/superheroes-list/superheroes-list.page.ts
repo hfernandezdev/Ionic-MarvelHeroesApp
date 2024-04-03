@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MarvelService } from '../../../core/services/marvel.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-superheroes-list',
@@ -10,7 +11,7 @@ export class SuperheroesListPage implements OnInit {
 
   superheroes: any[] = [];
 
-  constructor(private marvelService: MarvelService) { }
+  constructor(private marvelService: MarvelService, private router: Router) { }
 
   ngOnInit(): void {
     this.marvelService.getCharacters().subscribe(response => {
@@ -19,4 +20,11 @@ export class SuperheroesListPage implements OnInit {
     });
   }
 
+  goToDetail(superhero: any) {
+    this.router.navigate(['/superhero-detail'], {
+      queryParams: {
+        superhero: JSON.stringify(superhero)
+      }
+    });
+  }
 }

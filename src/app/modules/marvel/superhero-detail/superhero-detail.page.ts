@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-superhero-detail',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SuperheroDetailPage implements OnInit {
 
-  constructor() { }
+  superhero: any;
+
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      if (params && params['superhero']) {
+        this.superhero = JSON.parse(params['superhero']);
+      }
+    });
   }
 
 }

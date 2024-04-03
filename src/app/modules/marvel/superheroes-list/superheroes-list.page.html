@@ -6,7 +6,7 @@
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let superhero of superheroes" [routerLink]="['/superhero-detail', superhero.id]">
+    <ion-item *ngFor="let superhero of superheroes" (click)="goToDetail(superhero)">
       <ion-avatar slot="start">
         <img [src]="superhero.thumbnail.path + '/standard_fantastic.' + superhero.thumbnail.extension" alt="Thumbnail">
       </ion-avatar>
