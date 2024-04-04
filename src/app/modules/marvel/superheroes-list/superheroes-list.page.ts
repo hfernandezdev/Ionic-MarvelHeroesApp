@@ -17,7 +17,19 @@ export class SuperheroesListPage implements OnInit {
     this.marvelService.getCharacters().subscribe(response => {
       console.log(response);
       this.superheroes = response.data.results;
+
+      this.superheroes.map(superhero => {
+        superhero.thumbnail.path = this.secureUrl(superhero.thumbnail.path)
+      })
+
     });
+  }
+
+  secureUrl(url: string): string {
+    if (url.startsWith('http://')) {
+      return url.replace('http://', 'https://');
+    }
+    return url;
   }
 
   goToDetail(superhero: any) {
